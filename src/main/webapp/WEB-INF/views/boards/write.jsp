@@ -273,7 +273,7 @@
 
         <div class="write-title">게시글 작성</div>
 
-        <form action="/boards/write" method="post" id = "frm">
+        <form action="/boards/write" method="post" id = "frm" enctype="multipart/form-data">
         
         	
     		<!-- 카테고리 -->
@@ -335,7 +335,7 @@
     	            const formData = new FormData();
     	            formData.append("image", blob);
 
-    	            const resp = await fetch("/upload", {
+    	            const resp = await fetch("/files/upload", {
     	                method: "POST",
     	                body: formData
     	            });
