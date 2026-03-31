@@ -259,10 +259,9 @@ body {
 				</div>
 			</div>
 
-			<div class="form-group">
+			<div class="form-group" id="businessNumberGroup" style="display: none;">
 				<label for="business_number">사업자 번호</label> <input type="text"
-					id="business_number" name="business_number" placeholder="사업자 번호 입력"
-					required>
+					id="business_number" name="business_number" placeholder="사업자 번호 입력">
 			</div>
 
 			<div class="form-group">
