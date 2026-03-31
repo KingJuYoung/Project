@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -42,6 +43,17 @@ public class MembersController {
 			session.setAttribute("nickName", dao.getNickname(id));	
 		}
 		return "redirect:/";
+	}
+
+	@RequestMapping("/toIdSearch")
+	public String toIdSearch() {
+		return "/members/idSearch";
+	}
+	@ResponseBody
+	@RequestMapping("/idSearch")
+	public String idSearch(String name, String email) {
+		String id = dao.idSearch(name,email);
+		return id;
 	}
 	
 	@RequestMapping("/toSignUp")
@@ -136,6 +148,11 @@ public class MembersController {
 	    } else {
 	        return "fail";
 	    }
+	}
+	@RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
 	}
 
 }
