@@ -214,7 +214,7 @@ body {
 		<h2></h2>
 		<p>쉽고 정확한 알바 관리, 지금 가입하세요.</p>
 
-		<form>
+		<form action="members/signup">
 			<div class="form-group">
 				<label>가입 유형</label>
 				<div class="type-selector">
@@ -228,14 +228,14 @@ body {
 			<div class="form-group">
 				<label>아이디</label>
 				<div class="id-check-group">
-					<input type="text" placeholder="아이디를 입력해주세요">
+					<input type="text" placeholder="아이디를 입력해주세요" name="id">
 					<button type="button" class="id-check-btn">중복확인</button>
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label for="memberPw">비밀번호</label> <input type="password"
-					id="memberPw" name="memberPw" placeholder="영문, 숫자 포함 8자 이상"
+					id="memberPw" name="pw" placeholder="영문, 숫자 포함 8자 이상"
 					required>
 			</div>
 
@@ -244,17 +244,23 @@ body {
 					id="memberRePw" name="memberRePw" placeholder="영문, 숫자 포함 8자 이상"
 					required>
 			</div>
+			
+			<div class="form-group">
+				<label for="phone">전화번호</label> <input type="text"
+					id="phone" name="phone" placeholder="영문, 숫자 포함 8자 이상"
+					required>
+			</div>
 
 			<div class="form-group">
 				<div class="input-row">
 					<div style="flex: 1; display: flex; flex-direction: column;">
-						<label for="memberName">이름</label> <input type="text"
-							id="memberName" name="memberName" placeholder="실명 입력" required>
+						<label for="name">이름</label> <input type="text"
+							id="name" name="name" placeholder="실명 입력" required>
 					</div>
 
 					<div style="flex: 1; display: flex; flex-direction: column;">
-						<label for="nickName">닉네임</label> <input type="text" id="nickName"
-							name="nickName" placeholder="닉네임 입력" required>
+						<label for="nickname">닉네임</label> <input type="text" id="nickname"
+							name="nickname" placeholder="닉네임 입력" required>
 					</div>
 				</div>
 			</div>
