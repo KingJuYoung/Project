@@ -593,31 +593,37 @@ body {
 				style="text-decoration: none; color: black" href="#">로그인</a>
 			</span>
 
+
 			<div class="now-admin">관리자</div>
 			<div class="now-business" style="display: none;">기업</div>
 			<div class="now-personal" style="display: none;">개인</div>
 		</div>
 
-		<nav class="navbar">
-			<div style="display: flex; align-items: center; gap: 40px;">
-				<a href="#" class="logo">돈워리</a>
-				<div class="nav-menu">
-					<a href="/"> <i class="fa-solid fa-house fa-lg"
-						style="color: rgb(203, 203, 203);"></i> 홈
-					</a> <a href="#" class="active"> <i
-						class="fa-regular fa-calendar fa-lg"
-						style="color: rgb(36, 99, 235); margin-right: 5px;"></i> 급여 캘린더
-					</a> <a href="#"> <i class="fa-solid fa-briefcase fa-lg"
-						style="color: rgb(203, 203, 203); margin-right: 5px;"></i> 구인구직
-					</a> <a href="#"> <i class="fa-regular fa-message fa-lg"
-						style="color: rgb(203, 203, 203); margin-right: 5px;"></i> 커뮤니티
-					</a>
-				</div>
-			</div>
-			<a class="my-page" href="#"><i
-				class="fa-solid fa-user-gear fa-lg"
-				style="color: rgb(197, 197, 197);"></i> 마이페이지</a>
-		</nav>
+    <nav class="navbar">
+        <div style="display: flex; align-items: center; gap: 40px;">
+            <a href="#" class="logo">돈워리</a>
+            <div class="nav-menu">
+                <a href="/">
+                    <i class="fa-solid fa-house fa-lg" style="color: rgb(203, 203, 203);"></i>
+                    홈
+                </a>
+                <a href="#" class="active">
+                    <i class="fa-regular fa-calendar fa-lg" style="color: rgb(36, 99, 235); margin-right:5px;"></i>
+                    급여 캘린더
+                </a>
+                <a href="#">
+                    <i class="fa-solid fa-briefcase fa-lg" style="color: rgb(203, 203, 203); margin-right:5px;"></i>
+                    구인구직
+                </a>
+                <a href="#">
+                    <i class="fa-regular fa-message fa-lg" style="color: rgb(203, 203, 203); margin-right:5px;"></i>
+                    커뮤니티
+                </a>
+            </div>
+        </div>
+        <a class="my-page" href="#"><i class="fa-solid fa-user-gear fa-lg" style="color: rgb(197, 197, 197);"></i>
+        마이페이지</a>
+    </nav>
 
 		<h2 class="section-header">급여 캘린더</h2>
 
