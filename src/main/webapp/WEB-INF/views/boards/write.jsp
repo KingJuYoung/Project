@@ -305,7 +305,7 @@
 
             <!-- 버튼 영역 -->
             <div class="btn-group">
-                <button type="button" class="cancel-btn" onclick="location.href='/board/list'">취소</button>
+                <button type="button" class="cancel-btn" onclick="location.href='/boards/mainboard_list'">취소</button>
                 <button type="submit" class="submit-btn">등록</button>
             </div>
 
@@ -328,6 +328,24 @@
     	previewStyle: 'vertical',
     	hideModeSwitch: true,
     	language: 'ko-KR'
+    	
+    		hooks: {
+    	        addImageBlobHook: async (blob, callback) => {
+
+    	            const formData = new FormData();
+    	            formData.append("image", blob);
+
+    	            const resp = await fetch("/upload", {
+    	                method: "POST",
+    	                body: formData
+    	            });
+
+    	            const data = await resp.json();
+
+    	            // ⭐ 이게 핵심 (에디터에 이미지 넣기)
+    	            callback(data.url, "image");
+    	        }
+    	    }
 	});
 	$("#frm").on("submit",function(){
 		$("#content").val(editor.getHTML());
