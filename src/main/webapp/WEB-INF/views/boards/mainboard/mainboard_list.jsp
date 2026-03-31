@@ -510,6 +510,11 @@
         <span>글쓰기</span>
     </button>
 </div>
+<script>
+$(".floating-write-btn").on("click",function(){
+	location.href  = "/boards/toWrite";
+})
 
+</script>
 </body>
 </html>
