@@ -8,7 +8,7 @@ import com.kedu.dao.WorkPlaceDAO;
 import com.kedu.dto.WorkPlaceDTO;
 
 @Controller
-@RequestMapping("/workplace")
+@RequestMapping("/workplaces")
 public class WorkPlaceController {
 	
 	@Autowired

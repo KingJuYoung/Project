@@ -605,23 +605,24 @@ body {
 
 .tax-option-group {
 	display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-    gap: 12px; /* 간격을 16px에서 12px로 살짝 줄여서 공간 확보 */
-    margin-top: 8px;
-    background: #f8fafc;
-    padding: 10px 14px;
-    border-radius: 12px;
+	flex-wrap: nowrap;
+	align-items: center;
+	gap: 12px; /* 간격을 16px에서 12px로 살짝 줄여서 공간 확보 */
+	margin-top: 8px;
+	background: #f8fafc;
+	padding: 10px 14px;
+	border-radius: 12px;
 }
 
 #custom_tax_value {
-    border: 1px solid #dbe3ec;
-    border-radius: 6px;
-    text-align: right;
-    outline: none;
+	border: 1px solid #dbe3ec;
+	border-radius: 6px;
+	text-align: right;
+	outline: none;
 }
+
 #custom_tax_value:focus {
-    border-color: #2563eb;
+	border-color: #2563eb;
 }
 
 .tax-option-item {
@@ -680,7 +681,8 @@ body {
 					</a> <a href="/jobposts/jobpost"> <i
 						class="fa-solid fa-briefcase fa-lg"
 						style="color: rgb(203, 203, 203); margin-right: 5px;"></i> 구인구직
-					</a> <a href="/boards/mainboard_list"> <i class="fa-regular fa-message fa-lg"
+					</a> <a href="/boards/mainboard_list"> <i
+						class="fa-regular fa-message fa-lg"
 						style="color: rgb(203, 203, 203); margin-right: 5px;"></i> 커뮤니티
 					</a>
 				</div>
@@ -878,7 +880,7 @@ body {
 				<h2>새 근무지 등록</h2>
 				<button type="button" id="closeWorkplaceModal" class="close-btn">×</button>
 			</div>
-			<form id="workplaceForm" action="/workplace/insert" method="post">
+			<form id="workplaceForm" action="/workplaces/insert" method="post">
 				<div class="modal-body">
 					<div class="form-row">
 						<label for="name">근무지 이름</label> <input type="text" id="name"
@@ -927,6 +929,19 @@ body {
 														style="width: 60px; height: 30px; padding: 4px; font-size: 13px;"
 														disabled> <span
 														style="font-size: 13px; color: #374151;">%</span>
+												</div>
+											</div>
+											<div class="form-row" style="margin-top: 15px;">
+												<label for="payday">급여일</label>
+												<div style="display: flex; align-items: center; gap: 8px;">
+													<select id="payday" name="payday" required
+														style="width: 100px; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+														<option value="">선택</option>
+														<c:forEach var="i" begin="1" end="31">
+															<option value="${i}">${i}일</option>
+														</c:forEach>
+													</select> <span style="font-size: 14px; color: #666;">매월 정해진
+														날짜에 급여가 계산됩니다.</span>
 												</div>
 											</div>
 										</div>
