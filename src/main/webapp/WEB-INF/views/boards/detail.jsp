@@ -8,6 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>돈워리 - 메인(홈)</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* 기본 초기화 및 폰트 설정 */
@@ -469,7 +470,12 @@
         <div class="post-detail">
 
             <!-- 카테고리 -->
-            <div class="detail-category">${dto.category }</div>
+            <div class="detail-category"><c:choose>
+    						<c:when test="${dto.category == 'main'}">메인게시판</c:when>
+    						<c:when test="${dto.category == 'free'}">자유게시판</c:when>
+   	 						<c:when test="${dto.category == 'qna'}">질문게시판</c:when>
+    						<c:when test="${dto.category == 'review'}">리뷰게시판</c:when>
+						</c:choose></div>
 
             <!-- 제목 -->
             <h1 class="detail-title">${dto.title }</h1> <br>
@@ -539,26 +545,29 @@
          
          function getReplyList(){
         	 $.ajax({
-        		 url : "reply/list",
+        		 url : "/reply/list",
         		 data : {parent_seq : "${dto.seq}"},
         		 dataType:"json"
         	 }).done(function(list){
+        		 
         		 appendReplyList(list);
         	 })
          }
          $(document).ready(function(){
+        	 
         	    getReplyList();
         	});
          
          function appendReplyList(list){
         	 let html = "";
         	 list.forEach(function(comment){
-        		 html += `<div class="comment-item" data-seq="${comment.seq}">
+        		 console.log(${comment.seq});
+        		 html += `<div class="comment-item" data-seq=`+comment.seq+`>
         		        <div class="comment-header">
         	            <div class="comment-left">
-        	                <span class="comment-writer">${comment.member_nickname}</span>
+        	                <span class="comment-writer">`+ comment.member_nickname +`</span>
         	                <span class="divider">|</span>
-        	                <span class="comment-date">${comment.write_date_str}</span>
+        	                <span class="comment-date">`+ comment.write_date_str +`</span>
         	            </div>
         	            <div class="comment-actions">
         	                <span onclick="toggleReply(this)">답글</span>
@@ -571,7 +580,7 @@
         	        </div>
 
         	        <div class="comment-content">
-        	            ${comment.content}
+        	            `+ comment.content +`
         	        </div>
 
         	        <div class="reply-write" style="display: none;">
@@ -581,26 +590,28 @@
         	        <div class="reply-list">`;
         	        
         	        if(comment.replies && comment.replies.length > 0){
-        	        	html += `
-        	        		<div class="reply-item"> <!-- ✅ 이걸로 고정 -->
-                            <div class="comment-header">
-                                <div class="comment-left">
-                                    <span class="comment-writer">직장인A</span>
-                                    <span class="divider">|</span>
-                                    <span class="comment-date">2026-04-01</span>
+        	        	comment.replies.forEach(function(reply){
+        	        		console.log(comment.replies);
+        	        		html += `
+            	        		<div class="reply-item"> 
+                                <div class="comment-header">
+                                    <div class="comment-left">
+                                        <span class="comment-writer">`+reply.member_nickname+`</span>
+                                        <span class="divider">|</span>
+                                        <span class="comment-date">`+reply.write_date_str+`</span>
+                                    </div>
+                                    <div class="comment-actions">
+                                        <span>삭제</span>
+                                        <span class="report-btn">신고</span>
+                                    </div>
                                 </div>
-                                <div class="comment-actions">
-                                    <span>삭제</span>
-                                    <span class="report-btn">신고</span>
-                                </div>
-                            </div>
 
-                            <div class="comment-content">
-                                대댓글 내용입니다.
-                            </div>
-                        </div>`;
-        	        	
-        	        	
+                                <div class="comment-content">
+                                	`+reply.content+`
+                                </div>
+                            </div>`;
+        	        	})
+        	        	    	
         	        }
         	        
         	        html+=`
@@ -612,6 +623,8 @@
          
          
          $(".reply-insert-btn").on("click",function(){
+        	 console.log($(".content").val())
+        	 
         	 $.ajax({
         		 url : "/reply/insert",
         		 data :{parent_seq : "${dto.seq}",
@@ -620,7 +633,7 @@
         			 	re_reply_seq: null},
         		 dataType:"json",
         		 type: "post"
-        	 }).done(function(list){
+        	 }).done(function(){
         		 getReplyList();
         	 })
          })

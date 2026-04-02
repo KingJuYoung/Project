@@ -20,7 +20,7 @@ public class BoardsDAO {
 		return jdbc.queryForObject(sql,Integer.class);
 	}
 	public void insert(int next,BoardsDTO dto) {
-		String sql = "insert into boards valuse(?,?,?,?,?,0,sysdate)";
+		String sql = "insert into boards values(?,?,?,?,?,0,sysdate)";
 		jdbc.update(sql,next,dto.getMember_nickname(),dto.getCategory(),dto.getTitle(),dto.getContent());
 	}
 	public List<BoardsDTO> mainList(int start, int end){

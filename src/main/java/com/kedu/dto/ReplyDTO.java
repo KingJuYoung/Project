@@ -13,6 +13,18 @@ public class ReplyDTO {
 	private Timestamp write_date;
 	private Integer re_reply_seq;
 	
+	private String write_date_str;
+
+	public String getWrite_date_str() {
+	    return write_date_str;
+	}
+
+	public void setWrite_date_str(String write_date_str) {
+	    this.write_date_str = write_date_str;
+	}
+		
+	
+	
 	
 	public ReplyDTO() {}
 	
@@ -54,10 +66,7 @@ public class ReplyDTO {
 		return write_date;
 	}
 	
-	public String getWrite_date_str() {
-	    return new SimpleDateFormat("yyyy-MM-dd")
-	            .format(write_date);
-	}
+	
 	public void setWrite_date(Timestamp write_date) {
 		this.write_date = write_date;
 	}

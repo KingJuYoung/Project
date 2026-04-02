@@ -1,5 +1,6 @@
 package com.kedu.controllers;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class ReplyController {
 	@RequestMapping("/insert")
 	public void insert(ReplyDTO dto) {
 		dao.insert(dto);
-		
+		System.out.println("도착");
 	}
 	
 	@ResponseBody
@@ -38,10 +39,15 @@ public class ReplyController {
 		List<ReplyDTO> replies = new ArrayList<>();
 
 		for(ReplyDTO dto : list){
+
+		    dto.setWrite_date_str(
+		        new SimpleDateFormat("yyyy-MM-dd").format(dto.getWrite_date())
+		    );
+
 		    if(dto.getRe_reply_seq() == null){
-		        comments.add(dto); // 댓글
+		        comments.add(dto);
 		    }else{
-		        replies.add(dto); // 대댓글
+		        replies.add(dto);
 		    }
 		}
 		
@@ -50,6 +56,7 @@ public class ReplyController {
 
 		    for(ReplyDTO reply : replies){
 		        if(reply.getRe_reply_seq().equals(comment.getSeq())){
+		        
 		            child.add(reply);
 		        }
 		    }

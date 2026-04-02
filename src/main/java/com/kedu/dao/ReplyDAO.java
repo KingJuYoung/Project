@@ -16,11 +16,11 @@ public class ReplyDAO {
 	private JdbcTemplate jdbc;
 	
 	public void insert(ReplyDTO dto){
-		String sql = "insert into reply valuse(reply_seq.nextval,?,?,?,sysdate,?)";
+		String sql = "insert into reply values(reply_seq.nextval,?,?,?,sysdate,?)";
 		jdbc.update(sql,dto.getParent_seq(),dto.getMember_nickname(),dto.getContent(),dto.getRe_reply_seq());
 	}
 	public List<ReplyDTO> selectByParent_seq(int parent_seq){
-		String sql = "select * from reply where parent_seq = ?";
+		String sql = "select * from reply where parent_seq = ? order by 1 desc";
 		return jdbc.query(sql,new BeanPropertyRowMapper<ReplyDTO>(ReplyDTO.class),parent_seq);
 	}
 
