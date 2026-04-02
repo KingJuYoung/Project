@@ -20,7 +20,6 @@ public class WorkPlaceController {
 	public String insert(WorkPlaceDTO dto, HttpSession session) {
 		String memberId = (String) session.getAttribute("loginId");
 	    dto.setId(memberId);
-	    System.out.println(memberId);
 	    if(dto.getPay_type() == null) dto.setPay_type("시급");
 	    
 	    if (dto.getWork_start_time() != null && dto.getWork_start_time().isEmpty()) {
